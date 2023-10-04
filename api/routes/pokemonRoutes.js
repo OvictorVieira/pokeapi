@@ -3,7 +3,7 @@ const router = express.Router();
 const { getPokemonData } = require('../integration/pokeapiService');
 const { processPokemonData } = require('../services/pokemonService');
 const PokemonNotFoundException = require("../exceptions/PokemonNotFoundException");
-const PokemonDataFetchException = require("../exceptions/exceptions/PokemonDataFetchException");
+const PokemonDataFetchException = require("../exceptions/PokemonDataFetchException");
 
 router.get('/pokemon/:name', async (req, res) => {
     const pokemonName = req.params.name;

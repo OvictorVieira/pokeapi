@@ -1,6 +1,6 @@
 const axios = require('axios');
 const PokemonNotFoundException = require('../exceptions/PokemonNotFoundException');
-const PokemonDataFetchException = require("../exceptions/exceptions/PokemonDataFetchException");
+const PokemonDataFetchException = require("../exceptions/PokemonDataFetchException");
 
 const BASE_URL = 'https://pokeapi.co/api/v2';
 
