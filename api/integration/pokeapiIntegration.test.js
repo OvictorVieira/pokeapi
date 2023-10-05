@@ -1,11 +1,11 @@
 const axios = require('axios');
 const MockAdapter = require('axios-mock-adapter');
-const { getPokemonData } = require('./pokeapiService');
+const { getPokemonData } = require('./pokeapiIntegration');
 const PokemonNotFoundException = require('../exceptions/PokemonNotFoundException');
 const PokemonDataFetchException = require("../exceptions/PokemonDataFetchException");
 const dittoMock = require('../mocks/dittoIntegrationMock'); // Import the mock data
 
-describe('pokeapiService', () => {
+describe('pokeapiIntegration', () => {
     const mock = new MockAdapter(axios);
 
     afterEach(() => {
