@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { getPokemonByName } = require('../controllers/pokemonController'); // Import the controller function
+const { getPokemonByName } = require('../controllers/pokemonController');
 
-router.get('/pokemon/:name', getPokemonByName); // Use the controller function
+router.get('/pokemon/:name', getPokemonByName);
 
 module.exports = router;
