@@ -8,7 +8,9 @@ const { serializePokemonData } = require('../serializers/pokemonSerializer');
  */
 const processPokemonData = (pokemonData) => {
     if (!pokemonData || !pokemonData.abilities) {
-        return [];
+        return {
+            "abilities": []
+        };
     }
 
     const abilities = pokemonData.abilities.map(abilityObj => abilityObj.ability.name);
