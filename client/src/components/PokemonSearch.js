@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
+import searchPokemon from '../services/pokemonSearch';
 
 const PokemonSearch = () => {
     const [pokemonName, setPokemonName] = useState('');
     const [pokemonData, setPokemonData] = useState(null);
+    const [error, setError] = useState(null);
 
     const handleSearch = async () => {
         try {
-            const response = await fetch(`/api/pokemon/${pokemonName}`);
-            const data = await response.json();
+            const data = await searchPokemon(pokemonName.toLocaleLowerCase());
             setPokemonData(data);
-        } catch (error) {
-            console.error("Error fetching Pokemon data:", error);
+            setError(null);
+        } catch (err) {
+            setError('Error fetching Pokemon data.');
+            console.error(err);
         }
     };
 
@@ -18,17 +21,20 @@ const PokemonSearch = () => {
         <div>
             <input
                 type="text"
-                placeholder="Enter Pokemon name"
                 value={pokemonName}
                 onChange={(e) => setPokemonName(e.target.value)}
+                placeholder="Enter Pokemon name"
             />
             <button onClick={handleSearch}>Search</button>
+            {error && <p>{error}</p>}
             {pokemonData && (
                 <div>
                     <h2>{pokemonName}</h2>
                     <ul>
-                        {pokemonData.abilities.map(ability => (
-                            <li key={ability}>{ability}</li>
+                        {pokemonData.abilities.map((abilityObj, index) => (
+                            <li key={index}>
+                                <strong>Ability:</strong> {abilityObj} <br />
+                            </li>
                         ))}
                     </ul>
                 </div>
