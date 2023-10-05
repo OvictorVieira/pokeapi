@@ -5,8 +5,8 @@ FROM node:14
 WORKDIR /app
 
 # Copy package.json and package-lock.json for both frontend and backend
-COPY client/package*.json ./client/
-COPY api/package*.json ./api/
+COPY ../client/package*.json ./client/
+COPY ../api/package*.json ./api/
 
 # Install dependencies for both frontend and backend
 RUN cd client && npm install
